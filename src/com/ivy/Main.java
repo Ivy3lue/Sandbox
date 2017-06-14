@@ -14,18 +14,15 @@ public class Main {
         // write your code here
         Scanner scanner = new Scanner(System.in);
 
-        System.out.printf("Enter the first number: ");
-        int firstNumber = scanner.nextInt();
+        System.out.printf("Enter a three digit number: ");
+        int threeDigitNumber = scanner.nextInt();
 
-        System.out.printf("Enter the second number: ");
-        int secondNumber = scanner.nextInt();
-
-        float quotient = quotient(firstNumber, secondNumber);
-        System.out.printf("The quotient is: %.2f", quotient);
-    }
-
-    private static float quotient(int firstNumber, int secondNumber) {
-        return (float) firstNumber / (float) secondNumber;
+        if (threeDigitNumber < 100) {
+            System.out.println("The number is too small");
+        } else if (threeDigitNumber < 1000) {
+            System.out.println("The number is OK");
+        } else
+            System.out.println("The number is too big");
     }
 }
 
