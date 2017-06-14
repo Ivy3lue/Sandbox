@@ -13,12 +13,13 @@ public class Main {
     public static void main(String[] args) {
         // write your code here
         Scanner scanner = new Scanner(System.in);
-
-        System.out.printf("Enter a number: ");
-        int number = scanner.nextInt();
-
-        for (int counter = 0; counter <= number; counter++) {
-            System.out.println(counter);
+        while (true) {
+            System.out.printf("Enter a number: ");
+            int number = scanner.nextInt();
+            if (number == 0) {
+                System.out.println("Thank you for your time");
+                break;
+            }
         }
     }
 }
