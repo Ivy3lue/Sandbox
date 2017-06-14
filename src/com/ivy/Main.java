@@ -14,18 +14,14 @@ public class Main {
         // write your code here
         Scanner scanner = new Scanner(System.in);
 
-        System.out.printf("Enter your first number: ");
-        int firstNumber = scanner.nextInt();
+        System.out.printf("Enter the number to check: ");
+        int numberToCheck = scanner.nextInt();
 
-        System.out.printf("Enter your second number: ");
-        int secondNumber = scanner.nextInt();
-
-        int sum = sum(firstNumber, secondNumber);
-        System.out.printf("%d + %d = %d", firstNumber, secondNumber, sum);
-    }
-
-    private static int sum(int firstNumber, int secondNumber) {
-        return firstNumber + secondNumber;
+        if (numberToCheck % 2 == 0) {
+            System.out.println("The number is even");
+        } else {
+            System.out.println("The number is odd");
+        }
     }
 }
 
