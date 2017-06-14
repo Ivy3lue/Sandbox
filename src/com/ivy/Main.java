@@ -14,14 +14,18 @@ public class Main {
         // write your code here
         Scanner scanner = new Scanner(System.in);
 
-        System.out.printf("Enter the number to check: ");
-        int numberToCheck = scanner.nextInt();
+        System.out.printf("Enter the first number: ");
+        int firstNumber = scanner.nextInt();
 
-        if (numberToCheck % 2 == 0) {
-            System.out.println("The number is even");
-        } else {
-            System.out.println("The number is odd");
-        }
+        System.out.printf("Enter the second number: ");
+        int secondNumber = scanner.nextInt();
+
+        float quotient = quotient(firstNumber, secondNumber);
+        System.out.printf("The quotient is: %.2f", quotient);
+    }
+
+    private static float quotient(int firstNumber, int secondNumber) {
+        return (float) firstNumber / (float) secondNumber;
     }
 }
 
