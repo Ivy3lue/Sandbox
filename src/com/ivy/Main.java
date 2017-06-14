@@ -14,15 +14,34 @@ public class Main {
         // write your code here
         Scanner scanner = new Scanner(System.in);
 
-        System.out.printf("Enter a three digit number: ");
-        int threeDigitNumber = scanner.nextInt();
+        System.out.printf("Enter a weekday: ");
+        int weekday = scanner.nextInt();
 
-        if (threeDigitNumber < 100) {
-            System.out.println("The number is too small");
-        } else if (threeDigitNumber < 1000) {
-            System.out.println("The number is OK");
-        } else
-            System.out.println("The number is too big");
+        switch (weekday) {
+            case 1:
+                System.out.println("Monday");
+                break;
+            case 2:
+                System.out.println("Tuesday");
+                break;
+            case 3:
+                System.out.println("Wednesday");
+                break;
+            case 4:
+                System.out.println("Thursday");
+                break;
+            case 5:
+                System.out.println("Friday");
+                break;
+            case 6:
+                System.out.println("Saturday");
+                break;
+            case 7:
+                System.out.println("Sunday");
+                break;
+            default:
+                System.out.println("invalid number");
+                break;
+        }
     }
 }
-
