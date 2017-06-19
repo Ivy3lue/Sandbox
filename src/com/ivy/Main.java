@@ -17,12 +17,12 @@ public class Main {
         System.out.printf("Enter a number: ");
         int number = scanner.nextInt();
 
-        int invertedNumber = 0;
+        int sum = 0;
         while (number > 0) {
             int lastDigit = number % 10;
-            invertedNumber = invertedNumber * 10 + lastDigit;
+            sum += lastDigit;
             number /= 10;
         }
-        System.out.println("The number inverted is: " + invertedNumber);
+        System.out.println("The sum of the digits in the given number is: " + sum);
     }
 }
