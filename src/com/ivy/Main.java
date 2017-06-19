@@ -14,15 +14,14 @@ public class Main {
         // write your code here
         Scanner scanner = new Scanner(System.in);
 
-        System.out.printf("Enter a number: ");
-        int number = scanner.nextInt();
+        System.out.printf("Insert number of order: ");
+        int order = scanner.nextInt();
 
-        int sum = 0;
-        while (number > 0) {
-            int lastDigit = number % 10;
-            sum += lastDigit;
-            number /= 10;
+        for (int row = 0; row < order; row++) {
+            for (int column = 0; column < order; column++) {
+                System.out.print("O ");
+            }
+            System.out.println();
         }
-        System.out.println("The sum of the digits in the given number is: " + sum);
     }
 }
