@@ -13,13 +13,16 @@ public class Main {
     public static void main(String[] args) {
         // write your code here
         Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.printf("Enter a number: ");
-            int number = scanner.nextInt();
-            if (number == 0) {
-                System.out.println("Thank you for your time");
-                break;
-            }
+
+        System.out.printf("Enter a number: ");
+        int number = scanner.nextInt();
+
+        int invertedNumber = 0;
+        while (number > 0) {
+            int lastDigit = number % 10;
+            invertedNumber = invertedNumber * 10 + lastDigit;
+            number /= 10;
         }
+        System.out.println("The number inverted is: " + invertedNumber);
     }
 }
