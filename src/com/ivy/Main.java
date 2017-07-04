@@ -1,5 +1,8 @@
 package com.ivy;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -13,28 +16,23 @@ public class Main {
     public static void main(String[] args) {
         // write your code here
         Scanner scanner = new Scanner(System.in);
-
-        System.out.printf("Insert number of order: ");
-        int order = scanner.nextInt();
-
-        for (int row = 0; row < order; row++) {
-            for (int column = 0; column < order; column++) {
-                if (row % 2 == 0) {
-                    if (column % 2 == 1) {
-                        System.out.print("X ");
-                    } else {
-                        System.out.print("0 ");
-                    }
-                }
-                if (row % 2 == 1) {
-                    if (column % 2 == 0) {
-                        System.out.print("X ");
-                    } else {
-                        System.out.print("0 ");
-                    }
-                }
+        List<Integer> list = new ArrayList<>();
+        while (true) {
+            System.out.printf("Enter a number: ");
+            int number = scanner.nextInt();
+            if (number == 0) {
+                System.out.println("Thank you for your time");
+                break;
             }
-            System.out.println();
+            list.add(number);
         }
+        System.out.println(Arrays.toString(list.toArray()));
+        int maxNr = 1;
+        for (Integer number : list) {
+            if (number > maxNr) {
+                maxNr = number;
+            }
+        }
+        System.out.println("The largest number in the list is " + maxNr);
     }
 }
