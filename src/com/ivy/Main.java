@@ -18,14 +18,21 @@ public class Main {
         int order = scanner.nextInt();
 
         for (int row = 0; row < order; row++) {
-            for (int column = 0; column < order - row; column++) {
-                System.out.print("O ");
-            }
-            System.out.println();
-        }
-        for (int row = 1; row < order; row++) {
-            for (int column = 0; column <= row; column++) {
-                System.out.print("O ");
+            for (int column = 0; column < order; column++) {
+                if (row % 2 == 0) {
+                    if (column % 2 == 1) {
+                        System.out.print("X ");
+                    } else {
+                        System.out.print("0 ");
+                    }
+                }
+                if (row % 2 == 1) {
+                    if (column % 2 == 0) {
+                        System.out.print("X ");
+                    } else {
+                        System.out.print("0 ");
+                    }
+                }
             }
             System.out.println();
         }
