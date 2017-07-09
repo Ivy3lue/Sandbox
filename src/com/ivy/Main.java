@@ -14,12 +14,18 @@ public class Main {
         // write your code here
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your text:");
-        String input = scanner.nextLine();
+        String input = scanner.nextLine().trim();
 
         String trimmedInput = input.replaceAll("[^a-zA-Z0-9]", " ");
         String noDoubleSpaceInput = trimmedInput.replaceAll("( )+", " ");
         String[] words = noDoubleSpaceInput.split(" ");
 
-        System.out.println("Number of words: " + words.length);
+        int numberOfSmallWords = 0;
+        for (String word : words) {
+            if (word.length() < 4) {
+                numberOfSmallWords++;
+            }
+        }
+        System.out.println("Number of small words: " + numberOfSmallWords);
     }
 }
