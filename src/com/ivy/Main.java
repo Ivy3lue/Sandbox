@@ -12,28 +12,18 @@ public class Main {
      */
     public static void main(String[] args) {
         // write your code here
-
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter the coefficients for the square equation: ax^2 + bx + c = 0 ");
-        System.out.printf("Enter value a: ");
-        double a = scanner.nextDouble();
-        System.out.printf("Enter value b: ");
-        double b = scanner.nextDouble();
-        System.out.printf("Enter Value c: ");
-        double c = scanner.nextDouble();
+        System.out.println("Please enter your text ");
+        String input = scanner.nextLine();
 
-        double d = (Math.pow(b, 2) - (4 * a * c));
-
-        if (d < 0) {
-            System.out.println("The equation has no solution");
-        } else {
-            double x1 = (b + Math.sqrt(d)) / (2 * a);
-            double x2 = (-(b) + Math.sqrt(d)) / (2 * a);
-            if (d == 0) {
-                System.out.printf("x= %.2f", x1);
+        Map<Character, Integer> map = new HashMap<>();
+        for (Character character : input.toCharArray()) {
+            if (!map.containsKey(character)) {
+                map.put(character, 1);
             } else {
-                System.out.printf("x1 = %.2f; x2 = %.2f", x1, x2);
+                map.put(character, map.get(character) + 1);
             }
         }
+        System.out.println(Arrays.toString(map.entrySet().toArray()));
     }
 }
