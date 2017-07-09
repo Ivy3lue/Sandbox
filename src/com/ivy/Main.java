@@ -20,22 +20,15 @@ public class Main {
         String noDoubleSpaceInput = trimmedInput.replaceAll("( )+", " ");
         String[] words = noDoubleSpaceInput.split(" ");
 
-        int numberOdAnagrams = 0;
+        Map<String, Integer> map = new HashMap<>();
         for (String word : words) {
-            boolean anagram = isAnagram(word);
-            if (anagram) {
-                numberOdAnagrams++;
+            String key = String.format("%d letter words", word.length());
+            if (!map.containsKey(key)) {
+                map.put(key, 1);
+            } else {
+                map.put(key, map.get(key) + 1);
             }
         }
-        System.out.println("Entry has " + numberOdAnagrams + " anagrams");
-    }
-
-    private static boolean isAnagram(String word) {
-        for (int index = 0; index < word.length() / 2; index++) {
-            if (word.charAt(index) != word.charAt(word.length() - 1 - index)) {
-                return false;
-            }
-        }
-        return true;
+        System.out.println(Arrays.toString(map.entrySet().toArray()));
     }
 }
