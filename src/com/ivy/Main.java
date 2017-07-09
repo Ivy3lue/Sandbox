@@ -13,17 +13,13 @@ public class Main {
     public static void main(String[] args) {
         // write your code here
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter your text ");
+        System.out.println("Please enter your text:");
         String input = scanner.nextLine();
 
-        Map<Character, Integer> map = new HashMap<>();
-        for (Character character : input.toCharArray()) {
-            if (!map.containsKey(character)) {
-                map.put(character, 1);
-            } else {
-                map.put(character, map.get(character) + 1);
-            }
-        }
-        System.out.println(Arrays.toString(map.entrySet().toArray()));
+        String trimmedInput = input.replaceAll("[^a-zA-Z0-9]", " ");
+        String noDoubleSpaceInput = trimmedInput.replaceAll("( )+", " ");
+        String[] words = noDoubleSpaceInput.split(" ");
+
+        System.out.println("Number of words: " + words.length);
     }
 }
