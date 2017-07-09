@@ -12,45 +12,28 @@ public class Main {
      */
     public static void main(String[] args) {
         // write your code here
-        List<Integer> list = readNumbers();
-        if (list.isEmpty()) {
-            System.out.printf("List is empty");
-            return;
-        }
 
-        if (list.size() == 1) {
-            System.out.println("The list contains only one number");
-            return;
-        }
-
-        Integer maxNumber = findMaxNumber(list);
-        list.remove(maxNumber);
-
-        System.out.println("Second largest number in the list is " + findMaxNumber(list));
-    }
-
-    private static Integer findMaxNumber(List<Integer> list) {
-        int maxNumber = 1;
-        for (Integer number : list) {
-            if (number > maxNumber) {
-                maxNumber = number;
-            }
-        }
-        return maxNumber;
-    }
-
-    private static List<Integer> readNumbers() {
         Scanner scanner = new Scanner(System.in);
-        List<Integer> list = new ArrayList<>();
-        while (true) {
-            System.out.printf("Enter a number (or 0 to end list): ");
-            int number = scanner.nextInt();
-            if (number == 0) {
-                System.out.println("Thank you for your time");
-                break;
+        System.out.println("Please enter the coefficients for the square equation: ax^2 + bx + c = 0 ");
+        System.out.printf("Enter value a: ");
+        double a = scanner.nextDouble();
+        System.out.printf("Enter value b: ");
+        double b = scanner.nextDouble();
+        System.out.printf("Enter Value c: ");
+        double c = scanner.nextDouble();
+
+        double d = (Math.pow(b, 2) - (4 * a * c));
+
+        if (d < 0) {
+            System.out.println("The equation has no solution");
+        } else {
+            double x1 = (b + Math.sqrt(d)) / (2 * a);
+            double x2 = (-(b) + Math.sqrt(d)) / (2 * a);
+            if (d == 0) {
+                System.out.printf("x= %.2f", x1);
+            } else {
+                System.out.printf("x1 = %.2f; x2 = %.2f", x1, x2);
             }
-            list.add(number);
         }
-        return list;
     }
 }
