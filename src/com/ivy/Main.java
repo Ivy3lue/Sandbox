@@ -20,12 +20,22 @@ public class Main {
         String noDoubleSpaceInput = trimmedInput.replaceAll("( )+", " ");
         String[] words = noDoubleSpaceInput.split(" ");
 
-        int numberOfSmallWords = 0;
+        int numberOdAnagrams = 0;
         for (String word : words) {
-            if (word.length() < 4) {
-                numberOfSmallWords++;
+            boolean anagram = isAnagram(word);
+            if (anagram) {
+                numberOdAnagrams++;
             }
         }
-        System.out.println("Number of small words: " + numberOfSmallWords);
+        System.out.println("Entry has " + numberOdAnagrams + " anagrams");
+    }
+
+    private static boolean isAnagram(String word) {
+        for (int index = 0; index < word.length() / 2; index++) {
+            if (word.charAt(index) != word.charAt(word.length() - 1 - index)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
