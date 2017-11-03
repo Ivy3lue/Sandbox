@@ -1,57 +1,42 @@
 package com.ivy;
 
-import java.text.DecimalFormat;
-import java.util.Scanner;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
 
-    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##");
-
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        StringBuilder bigWords = new StringBuilder();
 
-        System.out.println("Product price: ");
-        double price = input.nextDouble();
-
-        System.out.println("Insert cash: ");
-        double cash = input.nextDouble();
-
-        cashReturn(cash, price);
-    }
-
-    static int[] cashReturn(double insertedCash, double priceOfItem) {
-        int[] changeToReturn = new int[]{-1, -1, -1, -1, -1};
-
-        if (priceOfItem < 0.1) {
-            System.out.println("Please insert valid price.");
-            return changeToReturn;
+        File file = new File("C:\\Users\\Ivy\\Desktop\\Text.txt");
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String trimmedLine = line.replaceAll("[^a-zA-Z0-9]|( )+", " ");
+                String[] words = trimmedLine.split(" ");
+                for (String word : words) {
+                    if (word.length() >= 4) {
+                        bigWords.append(word).append(" ");
+                    }
+                }
+            }
+            System.out.println(bigWords);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found " + file.toString());
+        } catch (IOException e) {
+            System.out.println("Unable to read file " + file.toString());
         }
 
-        if (insertedCash < priceOfItem) {
-            System.out.println("Insufficient funds.");
-            return changeToReturn;
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Ivy\\Desktop\\NewText.txt"))) {
+            writer.write(String.valueOf(bigWords));
+        } catch (IOException e) {
+            System.out.println("Unable to write to file " + file.toString());
         }
-
-        double fullChange = insertedCash - priceOfItem;
-        System.out.println("Your fullChange is " + Double.parseDouble(DECIMAL_FORMAT.format(fullChange)));
-
-        int dollars = (int) Math.floor(fullChange);
-        int decimalChange = (int) (fullChange * 100 - dollars * 100);
-        int quarters = decimalChange / 25;
-        decimalChange = decimalChange % 25;
-        int dimes = (decimalChange / 10);
-        decimalChange = decimalChange % 10;
-        int nickles = (decimalChange / 5);
-        int cents = decimalChange % 5;
-
-        System.out.println("Cashback: " + dollars + " dollars " + quarters + " quarters " + dimes + " dimes " + nickles + " nickles " + cents + " cents");
-
-        changeToReturn[0] = dollars;
-        changeToReturn[1] = quarters;
-        changeToReturn[2] = dimes;
-        changeToReturn[3] = nickles;
-        changeToReturn[4] = cents;
-
-        return changeToReturn;
     }
 }
